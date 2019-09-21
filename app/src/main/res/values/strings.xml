@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DateTimePickerLibrary</string>
+    <string name="btn_select_date">Select Date</string>
 </resources>
