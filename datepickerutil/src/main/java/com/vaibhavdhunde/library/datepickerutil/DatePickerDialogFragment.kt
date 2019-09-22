@@ -2,16 +2,19 @@ package com.vaibhavdhunde.library.datepickerutil
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
-class DatePickerDialogFragment(onDateSetListener: OnDateSetListener) : DialogFragment() {
+class DatePickerDialogFragment : DialogFragment() {
 
     companion object {
         const val EXTRA_SELECTED_DATE =
             "com.vaibhavdhunde.library.datepickerutil.EXTRA_SELECTED_DATE"
     }
+
+    private lateinit var onDateSetListener: OnDateSetListener
 
     private lateinit var calendar: Calendar
 
@@ -21,6 +24,17 @@ class DatePickerDialogFragment(onDateSetListener: OnDateSetListener) : DialogFra
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
         val timeInMillis = calendar.timeInMillis
         onDateSetListener.onDateSet(timeInMillis)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            onDateSetListener = context as OnDateSetListener
+        } catch (e: ClassCastException) {
+            throw ClassCastException(
+                "$context must implement DatePickerDialogFragment.OnDateSetListener"
+            )
+        }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
