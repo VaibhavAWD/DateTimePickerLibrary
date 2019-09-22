@@ -21,4 +21,25 @@
         android:layout_marginTop="16dp"
         android:text="@string/btn_select_date" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="#BDBDBD" />
+
+    <TextView
+        android:id="@+id/text_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:text="1:30 PM" />
+
+    <Button
+        android:id="@+id/btn_select_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/btn_select_time" />
+
 </LinearLayout>
