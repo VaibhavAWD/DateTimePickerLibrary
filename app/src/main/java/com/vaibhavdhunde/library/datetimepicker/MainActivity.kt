@@ -3,14 +3,14 @@ package com.vaibhavdhunde.library.datetimepicker
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.vaibhavdhunde.library.datepickerutil.DatePickerDialogFragment
-import com.vaibhavdhunde.library.datepickerutil.getDate
+import com.vaibhavdhunde.library.datepickerutil.DatePickerUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity(), DatePickerDialogFragment.OnDateSetListener {
 
-    private val selectedDate = Calendar.getInstance().time.time
+    private var selectedDate = Calendar.getInstance().time.time
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,11 +19,12 @@ class MainActivity : AppCompatActivity(), DatePickerDialogFragment.OnDateSetList
         showDate(selectedDate) // initial date
 
         btn_select_date.setOnClickListener {
-            getDate(this)
+            DatePickerUtil.getDate(this, selectedDate)
         }
     }
 
     override fun onDateSet(timeInMillis: Long) {
+        selectedDate = timeInMillis
         showDate(timeInMillis)
     }
 
