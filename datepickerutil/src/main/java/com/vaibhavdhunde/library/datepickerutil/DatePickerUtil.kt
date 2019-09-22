@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.vaibhavdhunde.library.datepickerutil.DatePickerDialogFragment.OnDateSetListener
 
 object DatePickerUtil {
 
@@ -12,13 +11,8 @@ object DatePickerUtil {
     const val TAG_FRAG_DATE_PICKER_DIALOG =
         "com.vaibhavdhunde.library.datepickerutil.TAG_FRAG_DATE_PICKER_DIALOG"
 
-    private lateinit var datePickerDialogFragment: DatePickerDialogFragment
-
-    fun init(listener: OnDateSetListener) {
-        datePickerDialogFragment = DatePickerDialogFragment(listener)
-    }
-
     fun getDate(context: Context, selectedDate: Long? = null) {
+        val datePickerDialogFragment = DatePickerDialogFragment()
         selectedDate?.let {
             val args = Bundle()
             args.putLong(DatePickerDialogFragment.EXTRA_SELECTED_DATE, it)
