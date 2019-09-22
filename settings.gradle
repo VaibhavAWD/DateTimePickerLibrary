@@ -1,2 +1,2 @@
-include ':app', ':datepickerutil'
+include ':app', ':datepickerutil', ':timepickerutil'
 rootProject.name='DateTimePickerLibrary'
